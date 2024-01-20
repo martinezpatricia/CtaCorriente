@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.HttpSession"%>
+<%
+// Invalidar la sesión si existe al cargar la página de login
+if (session != null) {
+    session.invalidate();
+}
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -62,6 +69,12 @@
     <body>
         <div class="login-container">
             <h2>Login de usuarios</h2>
+            <% String errorMessage = (String) request.getAttribute("errorMessage"); %>
+            <% if (errorMessage != null && !errorMessage.isEmpty()) { %>
+            <div class="error-message">
+                <%= errorMessage %>
+            </div>
+            <% } %>
             <form action="${pageContext.request.contextPath}/LoginServlet" method="post">
                 <div class="form-group">
                     <label for="username">Username:</label>
