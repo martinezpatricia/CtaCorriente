@@ -19,7 +19,7 @@ pipeline {
             }
         }*/
 
-        stage('Build and Artifactory Publish') {
+        /*stage('Build and Artifactory Publish') {
             steps {
                 script {
                     timeout(time: 20, unit: 'MINUTES') {
@@ -33,7 +33,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
 
         stage('Code Analysis') {
             when {
