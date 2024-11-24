@@ -59,7 +59,7 @@
 
         <div class="body-container" style="margin-top: 60px;">
             <h2>Registro de Usuario</h2>
-            <form action="${pageContext.request.contextPath}/RegisterUserServlet" method="post">
+            <form action="${pageContext.request.contextPath}/RegisterServlet" method="post">
                 <div class="form-group">
                     <label for="username">Nombre de usuario:</label>
                     <input type="text" id="username" name="username" required>
@@ -71,10 +71,6 @@
                 <div class="form-group">
                     <label for="name">Nombre completo:</label>
                     <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Correo electrónico:</label>
-                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="department">Departamento:</label>

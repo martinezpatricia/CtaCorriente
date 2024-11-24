@@ -45,8 +45,8 @@
                     <input type="text" id="petName" name="petName" required>
                 </div>
                 <div class="form-group">
-                    <label for="dni">DNI:</label>
-                    <input type="text" id="dni" name="dni" required>
+                    <label for="dni">RUT:</label>
+                    <input type="text" id="rut" name="rut" required>
                 </div>
                 <div class="form-group">
                     <button type="submit">Registrar</button>

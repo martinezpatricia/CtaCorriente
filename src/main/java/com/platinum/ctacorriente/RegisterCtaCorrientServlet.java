@@ -18,16 +18,16 @@ public class RegisterCtaCorrientServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         // Obtener los datos del formulario
-        String dniPerson = request.getParameter("dniPerson");
-        String amount = request.getParameter("amount"); // Asumiendo que es un campo numérico
-        String idUser = request.getParameter("idUser"); // Asumiendo que se proporciona el ID del usuario relacionado
+        String dniPerson = request.getParameter("rutCliente");
+        String amount = request.getParameter("monto"); // Asumiendo que es un campo numérico
+        String idUser = request.getParameter("idUsuario"); // Asumiendo que se proporciona el ID del usuario relacionado
 
         // Variable para verificar si el registro fue exitoso
         boolean isRegistered = false;
 
         // Intentar conectar a la base de datos y registrar la nueva cuenta corriente
         try (Connection conn = DataBaseConnector.getConnection(); 
-             PreparedStatement stmt = conn.prepareStatement("INSERT INTO cta_corrient (dniPerson, amount, idUser) VALUES (?, ?, ?)")) {
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO cta_corriente (rutCliente, monto, idUsuario) VALUES (?, ?, ?)")) {
             
             stmt.setString(1, dniPerson);
             stmt.setInt(2, Integer.parseInt(amount));

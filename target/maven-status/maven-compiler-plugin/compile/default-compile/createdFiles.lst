@@ -1,6 +1,8 @@
+com\platinum\ctacorriente\LoginServlet.class
 com\platinum\ctacorriente\RegisterCtaCorrientServlet.class
 com\platinum\ctacorriente\RegisterTransactionServlet.class
-com\platinum\ctacorriente\LoginServlet.class
+tests\Test.class
 com\platinum\ctacorriente\DataBaseConnector.class
 com\platinum\ctacorriente\RegisterPersonServlet.class
+tests\LoginSteps.class
 com\platinum\ctacorriente\RegisterServlet.class

@@ -22,6 +22,7 @@ public class RegisterTransactionServlet extends HttpServlet {
         String amount = request.getParameter("amount"); // Asumiendo que es un campo numérico
         String cta = request.getParameter("cta"); // Asumiendo que este es un campo de descripción
         String idBank = request.getParameter("idBank"); // ID del banco asociado a la transacción
+        System.out.println("NOS LLEGA: " + idCtaCorrient + ", " + amount + ", " + cta + ", " + idBank);
 
         // Variable para verificar si el registro fue exitoso
         boolean isRegistered = false;
@@ -31,7 +32,7 @@ public class RegisterTransactionServlet extends HttpServlet {
              PreparedStatement stmt = conn.prepareStatement("INSERT INTO transaction (idCta_corrient, amount, cta, idBank) VALUES (?, ?, ?, ?)")) {
             
             stmt.setInt(1, Integer.parseInt(idCtaCorrient));
-            stmt.setDouble(2, Double.parseDouble(amount)); // Cambiar a setDouble si el campo amount es de tipo DECIMAL o FLOAT en la base de datos
+            stmt.setInt(2, Integer.parseInt(amount)); // Cambiar a setDouble si el campo amount es de tipo DECIMAL o FLOAT en la base de datos
             stmt.setString(3, cta);
             stmt.setInt(4, Integer.parseInt(idBank));
 
@@ -42,6 +43,7 @@ public class RegisterTransactionServlet extends HttpServlet {
             }
         } catch (SQLException e) {
             // Manejar excepciones de SQL aquí
+            System.out.println("El ERROR ES: " + e.toString());
 
         }
 

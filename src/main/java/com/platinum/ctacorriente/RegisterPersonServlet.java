@@ -31,7 +31,7 @@ public class RegisterPersonServlet extends HttpServlet {
 
         // Intentar conectar a la base de datos y registrar la nueva persona
         try (Connection conn = DataBaseConnector.getConnection(); 
-             PreparedStatement stmt = conn.prepareStatement("INSERT INTO person (name, surname, address, email, fone, pet_name, dni) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO person (name, surname, address, email, phone, petName, dni) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
             
             stmt.setString(1, name);
             stmt.setString(2, surname);
@@ -47,7 +47,7 @@ public class RegisterPersonServlet extends HttpServlet {
                 isRegistered = true;
             }
         } catch (SQLException e) {
-            // Manejar excepciones de SQL aquí
+            System.out.println("EL ERROR ES: " + e.toString());
 
         }
 

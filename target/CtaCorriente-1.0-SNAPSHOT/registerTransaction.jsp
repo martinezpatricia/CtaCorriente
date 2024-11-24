@@ -71,7 +71,7 @@
             <form action="${pageContext.request.contextPath}/RegisterTransactionServlet" method="post">
                 <div class="form-group">
                     <label for="idCta_corrient">Cuenta Corriente:</label>
-                    <select id="idCta_corrient" name="idCta_corrient" required>
+                    <select id="idCtaCorrient" name="idCtaCorrient" required>
                         <option value="">Seleccione una cuenta</option>
                         <%
                             for (Integer id : ctaCorrients.keySet()) {
@@ -99,7 +99,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="cta">Descripción:</label>
+                    <label for="cta">Cuenta:</label>
                     <input type="text" id="cta" name="cta" required>
                 </div>
 

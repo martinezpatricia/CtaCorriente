@@ -21,21 +21,18 @@ public class RegisterServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String name = request.getParameter("name");
-        String rut = request.getParameter("rut");
-        // Agrega aquí cualquier otro campo que necesites recoger del formulario de registro
+        String idDepartment = request.getParameter("idDepartment"); // Asumiendo que es un String. Si es un entero, usarás Integer.parseInt(request.getParameter("idDepartment"));
 
         // Variable para verificar si el registro fue exitoso
         boolean isRegistered = false;
 
         // Intentar conectar a la base de datos y registrar el nuevo usuario
-        try (Connection conn = DataBaseConnector.getConnection(); 
-             PreparedStatement stmt = conn.prepareStatement("INSERT INTO user (username, password, name, rut) VALUES (?, ?, ?, ?)")) {
-            
+        try (Connection conn = DataBaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("INSERT INTO user (username, password, name, idDepartment) VALUES (?, ?, ?, ?)")) {
+
             stmt.setString(1, username);
             stmt.setString(2, password);
             stmt.setString(3, name);
-            stmt.setString(4, rut);
-            // Setea aquí cualquier otro campo necesario para el registro
+            stmt.setString(4, idDepartment); // O stmt.setInt(5, Integer.parseInt(idDepartment)) si el idDepartment es un entero
 
             // Ejecutar la actualización
             int rowsAffected = stmt.executeUpdate();
@@ -44,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
             }
         } catch (SQLException e) {
             // Manejar excepciones de SQL aquí
-
+            System.out.println("EL ERROR: " + e.toString()); // Loguear el error
         }
 
         // Redirigir al usuario a una página de confirmación o mostrar un mensaje
