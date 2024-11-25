@@ -15,11 +15,11 @@ pipeline {
     stages {
         /*stage('Checkout') {
             steps {
-                git url: 'https://github.com/martinezpatricia/CtaCorriente.git'
+                git url: 'https://github.com/CtaCorriente.git'
             }
         }*/
 
-        /*stage('Build and Artifactory Publish') {
+        stage('Build and Artifactory Publish') {
             steps {
                 script {
                     timeout(time: 20, unit: 'MINUTES') {
@@ -33,7 +33,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
 
         stage('Code Analysis') {
             when {
@@ -60,3 +60,4 @@ pipeline {
         }
     }
 }
+
