@@ -2,20 +2,20 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.6' 
+        maven 'Maven 3.9.9' 
     }
 
     environment {
         // Define las variables de entorno
-        ARTIFACTORY_NAME = 'MyArtifactoryServer'
-        ARTIFACTORY_REPO_KEY = 'myconstruction-libs-release'
-        ARTIFACTORY_URL = 'https://appsource.jfrog.io/artifactory'
+        ARTIFACTORY_NAME = 'libs-snapshot-local'
+        ARTIFACTORY_REPO_KEY = 'libs-snapshot-local'
+        ARTIFACTORY_URL = 'http://127.0.0.1:8082/artifactory'
     }
 
     stages {
         /*stage('Checkout') {
             steps {
-                git url: 'https://github.com/frankkismann/CtaCorriente.git'
+                git url: 'https://github.com/martinezpatricia/CtaCorriente.git'
             }
         }*/
 
@@ -25,7 +25,7 @@ pipeline {
                     timeout(time: 20, unit: 'MINUTES') {
                         def server = Artifactory.server(ARTIFACTORY_NAME)
                         def rtMaven = server.newMavenBuild()
-                        rtMaven.tool = 'Maven 3.9.6' // Asegúrate de que este nombre coincida con la configuración en Jenkins
+                        rtMaven.tool = 'Maven 3.9.9' // Asegúrate de que este nombre coincida con la configuración en Jenkins
                         rtMaven.resolver server: server, releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot'
                         rtMaven.deployer server: server, releaseRepo: ARTIFACTORY_REPO_KEY, snapshotRepo: ARTIFACTORY_REPO_KEY
                         def buildInfo = rtMaven.run goals: 'clean install -Dmaven.test.skip=true', pom: 'pom.xml'
