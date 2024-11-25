@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         // Define las variables de entorno
-        ARTIFACTORY_NAME = 'libs-release-local'
+        ARTIFACTORY_NAME = 'art1'
         ARTIFACTORY_REPO_KEY = 'libs-release-local'
         ARTIFACTORY_URL = 'http://127.0.0.1:8082/artifactory'
     }
